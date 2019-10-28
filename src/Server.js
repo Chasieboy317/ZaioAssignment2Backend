@@ -63,6 +63,53 @@ router.get('/getSinglePropertyData/:id', (req, res) => {
     return res.json({ success: true, data: data });
   });
 });
+
+router.get('/getPropertyData/area/:payload', (req, res) => {
+  if(req.params.payload==null) {
+    Properties.find((err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+  else {
+    Properties.find({'area': req.params.payload}, (err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+});
+
+router.get('/getPropertyData/address/:payload', (req, res) => {
+  if(req.params.payload==null) {
+    Properties.find((err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+  else {
+    Properties.find({'address': req.params.payload}, (err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+});
+
+
+router.get('/getPropertyData/agency/:payload', (req, res) => {
+  if(req.params.payload==null) {
+    Properties.find((err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+  else {
+    Properties.find({'agency': req.params.payload}, (err, data) => {
+      if (err) return res.json({ success: false, error: err });
+      return res.json({ success: true, data: data });
+    });
+  }
+});
+
 // this is our update method
 // this method overwrites existing data in our database
 router.post('/updateData', (req, res) => {
@@ -98,6 +145,30 @@ router.post('/putData', (req, res) => {
   }
   data.message = message;
   data.id = id;
+  data.save((err) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true });
+  });
+});
+
+//add registered users to the database
+router.post('/putUserData', (req, res) => {
+  let data = new Users();
+
+  const { email, password, firstname, lastname } = req.body;
+
+  if (!email || !password) {
+    return res.json({
+      success: false,
+      error: 'INVALID INPUTS',
+    });
+  }
+
+  data.email = email;
+  data.password = password;
+  data.firstname = firstname;
+  data.lastname = lastname;
+
   data.save((err) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true });
