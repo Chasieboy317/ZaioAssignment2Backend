@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const https = require('https');
+const fs = require('fs');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
@@ -179,4 +181,9 @@ router.post('/putUserData', (req, res) => {
 app.use('/api', router);
 
 // launch our backend into a port
-app.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+https.createServer({
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem'),
+    passphrase: 'zaioproperty24'
+}, app)
+.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
