@@ -3,7 +3,9 @@ const express = require('express');
 var cors = require('cors');
 const bodyParser = require('body-parser');
 const logger = require('morgan');
-const Data = require('./data');
+var {Users} = require('./Data');
+var {Properties} = require('./Data');
+var jwt = 1;
 
 const API_PORT = 3001;
 const app = express();
@@ -32,13 +34,35 @@ app.use(logger('dev'));
 
 // this is our get method
 // this method fetches all available data in our database
-router.get('/getData', (req, res) => {
-  Data.find((err, data) => {
+router.get('/getUserData', (req, res) => {
+  Users.find((err, data) => {
     if (err) return res.json({ success: false, error: err });
     return res.json({ success: true, data: data });
   });
 });
 
+router.get('/getSingleUserData/:email/:password', (req, res) => {
+  Users.findOne({'email': `${req.params.email}`, 'password': `${req.params.password}`}, (err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    else if (data==null) return res.json({success: true, data: null});
+    jwt+=1;
+    return res.json({ success: true, data: jwt});
+  });
+});
+
+router.get('/getPropertyData', (req, res) => {
+  Properties.find((err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
+});
+
+router.get('/getSinglePropertyData/:id', (req, res) => {
+  Properties.findOne({'id': req.params.id}, (err, data) => {
+    if (err) return res.json({ success: false, error: err });
+    return res.json({ success: true, data: data });
+  });
+});
 // this is our update method
 // this method overwrites existing data in our database
 router.post('/updateData', (req, res) => {
