@@ -9,7 +9,7 @@ var {Users} = require('./Data');
 var {Properties} = require('./Data');
 var jwt = 1;
 
-const API_PORT = 3001;
+const API_PORT = process.env.PORT || 8080;
 const app = express();
 app.use(cors());
 const router = express.Router();
