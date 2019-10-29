@@ -30,7 +30,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // (optional) only made for logging and
 // bodyParser, parses the request body to be a readable json format
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(logger('dev'));
 
@@ -177,13 +177,24 @@ router.post('/putUserData', (req, res) => {
   });
 });
 
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(path.join(__dirname, 'client/build')));
+
+  // Handle React routing, return all requests to React app
+  app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
+  });
+}
+
 // append /api for our http requests
 app.use('/api', router);
 
 // launch our backend into a port
-https.createServer({
+/*https.createServer({
     key: fs.readFileSync('./key.pem'),
     cert: fs.readFileSync('./cert.pem'),
     passphrase: 'zaioproperty24'
 }, app)
-.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));
+.listen(API_PORT, () => console.log(`LISTENING ON PORT ${API_PORT}`));*/
+app.listen(API_PORT, () => console.log(`Listening on port ${API_PORT}`));

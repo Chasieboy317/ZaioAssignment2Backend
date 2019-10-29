@@ -1,0 +1,71 @@
+.card {
+  width: 80vw;
+  height: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "image details";
+  margin: auto;
+  margin-top: 2em;
+  border-radius: 5px;
+  box-shadow: 3px 3px 10px 3px #ccc;
+  cursor: pointer;
+}
+
+#image {
+  width: 100%;
+  height: auto;
+  grid-area: "image";
+}
+
+#details {
+  grid-area: "details";
+  margin: 1em;
+  padding: 0;
+}
+
+#price {
+  color: #0d63c9;
+  text-align: left;
+}
+
+#type {
+  font-weight: 400;
+  text-align: left;
+  margin-top: 1em;
+}
+
+#area {
+  text-align: left;
+  margin-top: 1em;
+}
+
+#address {
+  font-weight: 400;
+  color: #0d63c9;
+  text-align: left;
+  margin-top: 1em;
+}
+
+#description {
+  font-size: 12px;
+  text-align: left;
+  margin-top: 0.5em;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
+}
+
+@media screen and (max-width:418px) {
+  .card {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto auto;
+    grid-template-areas: "image" "details";
+  }
+
+  #price {
+    font-size: 20px;
+  }
+
+}

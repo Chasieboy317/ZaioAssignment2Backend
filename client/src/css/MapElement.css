@@ -1,0 +1,15 @@
+#mapElement {
+  width: 80vw;
+  height: 40vw;
+  margin: 2em auto;
+  border: solid 3px #1d62c8;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 418px) {
+  #mapElement {
+    width: 60vw;
+    height: 50vh;
+    margin-left: 2em;
+  }
+}

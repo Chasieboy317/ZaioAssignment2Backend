@@ -4,10 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+	"client": "cd client && yarn start",
+    "server": "nodemon src/Server.js",
+    "dev": "concurrently --kill-others-on-fail \"yarn server\" \"yarn client\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/Server.js"
+    "start": "node src/Server.js",
+	"heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
   },
-  "author": "",
+  "author": {
+	"name": "Chase Abrahams"
+  },
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
@@ -15,5 +21,8 @@
     "express": "^4.17.1",
     "mongoose": "^5.7.7",
     "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "concurrently": "^4.0.1"
   }
 }

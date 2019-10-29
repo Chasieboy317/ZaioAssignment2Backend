@@ -1,0 +1,114 @@
+.background {
+  background-color: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  overflow: auto;
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup {
+  margin: auto;
+  margin-top: 2em;
+  background-color: white;
+  border: 1px solid black;
+  width: 30vw;
+  height: auto;
+}
+
+.header {
+  margin: 1em auto 2em auto;
+}
+
+.header span {
+  font: normal 18px Verdana;
+  padding: 1em;
+}
+
+.header span a {
+  color: #0d63c9;
+}
+
+#signup {
+  font-weight: bold;
+}
+
+#login {
+  font-weight: bold;
+}
+
+#footer {
+  width: 80%;
+  height: 3vh;
+  margin: 1em auto;
+  background-color: #0d63c9;
+  border: none;
+  border-radius: 5px;
+  color: white;
+}
+
+#closeX {
+  position: relative;
+}
+
+.popup form {
+  text-align:center;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 1em 3em;
+}
+
+.popup form input {
+  text-align: left;
+  width: 70%;
+  height: 4vh;
+  margin: 1em auto;
+  padding: 0em 1em;
+}
+
+.popup form button {
+  width: 70%;
+  height: 4vh;
+  margin: 1em auto;
+  background-color: #3cc89e;
+  border: none;
+  border-radius: 5%;
+  color: white;
+}
+
+.popup hr {
+  width: 80%;
+  margin: auto;
+}
+
+.popup input:invalid {
+  outline-color: #f04432;
+}
+
+.popup input:valid {
+  outline-color: #1d62c8;
+}
+
+#pass {
+  width: 70%;
+  height: auto;
+  text-align: left;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 10px;
+  color: #f04432;
+}
+
+@media screen and (max-width: 418px) {
+  .popup {
+    margin: auto;
+    margin-top: 2em;
+    background-color: white;
+    border: 1px solid black;
+    width: 80vw;
+    height: auto;
+  }
+}

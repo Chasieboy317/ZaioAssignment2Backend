@@ -1,0 +1,13 @@
+.Footer {
+  background-color: #333;
+  position: fixed;
+  height: 5vh;
+  width: 100vw;
+  bottom: 0;
+}
+
+.Footer h1 {
+  font-size: 16px;
+  color: #eee;
+  margin-top: 1vh;
+}

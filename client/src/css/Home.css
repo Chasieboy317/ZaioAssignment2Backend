@@ -1,0 +1,16 @@
+.googleMap {
+  margin: 2em auto;
+}
+
+.googleMap h1 {
+  text-align: left;
+  margin: auto;
+  width: 80vw;
+  color: #0d63c9;
+}
+
+@media screen and (max-width: 418px) {
+  .googleMap h1 {
+    font-size: 20px;
+  }
+}

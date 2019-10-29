@@ -1,0 +1,45 @@
+.filter {
+  grid-area: filterarea;
+}
+
+.filterList {
+  width: 60%;
+  display: flex;
+  background-color: rgba(0,0,0, 0.7);
+  border-radius: 5px;
+  height: auto;
+  justify-content: space-around;
+  list-style: none;
+}
+.filterList a {
+  margin: 1em;
+  color: #aaa;
+}
+
+.filter h2 {
+  text-align: left;
+  font: bold 12px Verdana;
+  margin-bottom: 0.2em;
+  color: black;
+}
+
+.verticalLine {
+  display: inline;
+  border-left: thin solid #aaa;
+}
+
+.wrapper {
+  display: flex;
+}
+
+@media screen and (max-width: 418px) {
+    .filterList a {
+      font-size: 10px;
+    }
+    .filterList {
+      height: auto;
+    }
+    .filter h2 {
+      font: bold 10px Verdana;
+    }
+}
