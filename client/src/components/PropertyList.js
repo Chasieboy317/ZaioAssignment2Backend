@@ -31,7 +31,7 @@ export default class PropertyList extends Component {
 
   getDataFromDb = () => {
   let data = [];
-    fetch(`http://${process.env.PORT||8080}/api/getPropertyData`)
+    fetch(`api/getPropertyData`)
       .then((data) => data.json())
       .then((res) => res.data.length>0 ? this.setState({properties: res.data.map((x) => {
         return (<PropertyCard key={x._id} id={x.id} price={x.price} type={x.type} area={x.area} address={x.address} description={x.description} /> )
@@ -41,7 +41,7 @@ export default class PropertyList extends Component {
   };
 
   searchDb = () => {
-    fetch(`http://${process.env.PORT||8080}/api/getPropertyData/${this.props.search}/${this.props.payload}`)
+    fetch(`api/getPropertyData/${this.props.search}/${this.props.payload}`)
       .then((data) => data.json())
       .then((res) => res.data.length>0 ? this.setState({properties: res.data.map((x) => {
         return (<PropertyCard key={x._id} id={x.id} price={x.price} type={x.type} area={x.area} address={x.address} description={x.description} /> )

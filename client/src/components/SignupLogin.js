@@ -54,13 +54,13 @@ class SignupLogin extends Component {
   handleSignupSubmit (e) {
     e.preventDefault();
     if (this.checkPassword()==null && (this.state.email.length>0&&this.checkEmail()==null)) {
-      axios.post(`http://${process.env.PORT||8080}/api/putUserData`, {
+      axios.post(`api/putUserData`, {
         email: this.state.email,
         password: this.state.password,
         firstname: this.state.firstname,
         lastname: this.state.lastname
       });
-      setTimeout(() => {fetch(`http://${process.env.PORT||8080}/api/getSingleUserData/${this.state.email}/${this.state.password}`)
+      setTimeout(() => {fetch(`api/getSingleUserData/${this.state.email}/${this.state.password}`)
         .then((data) => data.json())
         .then((res) => {
           if (res.data==null) {
@@ -76,7 +76,7 @@ class SignupLogin extends Component {
   handleLoginSubmit (e) {
     e.preventDefault()
     if (this.state.email!=''&&this.state.password!='') {
-      fetch(`http://${process.env.PORT||8080}/api/getSingleUserData/${this.state.email}/${this.state.password}`)
+      fetch(`api/getSingleUserData/${this.state.email}/${this.state.password}`)
         .then((data) => data.json())
         .then((res) => {
           if (res.data==null) {

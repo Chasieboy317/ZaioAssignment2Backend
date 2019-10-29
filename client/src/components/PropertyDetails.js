@@ -29,7 +29,7 @@ class PropertyDetails extends Component {
   }
 
   getPropertyData = () => {
-    fetch(`http://${process.env.PORT||8080}/api/getSinglePropertyData/${this.props.match.params.property_id}`)
+    fetch(`api/getSinglePropertyData/${this.props.match.params.property_id}`)
       .then((data) => data.json())
       .then((res) => {
           this.setState(
